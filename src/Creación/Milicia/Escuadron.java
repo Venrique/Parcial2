@@ -27,7 +27,11 @@ public class Escuadron implements Milicia {
     
     @Override
     public void Atacar() {
-       
+        System.out.println("Attacks");
+    }
+    
+    public int getAtaque(){
+        return ataque;
     }
     
     public boolean isAlive(){

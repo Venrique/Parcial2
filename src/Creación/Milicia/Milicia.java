@@ -11,4 +11,5 @@ package Creación.Milicia;
  */
 public interface Milicia {
     void Atacar();
+    int getAtaque();
 }

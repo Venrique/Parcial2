@@ -5,6 +5,9 @@
  */
 package victormendoza.s.world;
 
+import Creación.AbstractEdificationFactory;
+import Creación.EdificationProducer;
+import Creación.Milicia.Milicia;
 import java.util.Scanner;
 
 /**
@@ -19,9 +22,26 @@ public class Menu {
     public static Menu getInstance(){
         if(menu == null){
             menu = new Menu();
+            return menu;
         }else{
             return menu;
         }
-        return null;
+        
+    }
+    
+    public void MenuPrueba(){
+        Scanner input = new Scanner(System.in);
+        String cosa,raza;
+        System.out.println("Escriba que desea generar:");
+        cosa = input.nextLine();
+        System.out.println("Escriba la raza:");
+        raza = input.nextLine();
+        
+        AbstractEdificationFactory factory;
+        
+        factory = EdificationProducer.getFactory(cosa);
+        Milicia mili = factory.getMilicia(raza);
+        mili.Atacar();
+        System.out.println(mili.getAtaque());
     }
 }
