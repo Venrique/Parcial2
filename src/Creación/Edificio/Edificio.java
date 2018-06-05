@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Creación;
-
-import Creación.Edificio.Edificio;
-import Creación.Milicia.Milicia;
+package Creación.Edificio;
 
 /**
  *
  * @author victor
  */
-public interface AbstractEdificationFactory {
-    Milicia getMilicia(String tipo);
-    Edificio getEdificio(String tipo);
+public interface Edificio {
+    void GenerarRecurso();
+    void GenerarMilicia();
 }

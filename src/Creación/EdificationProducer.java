@@ -5,6 +5,7 @@
  */
 package Creación;
 
+import Creación.Edificio.FactoryEdificio;
 import Creación.Milicia.FactoryMilicia;
 
 /**
@@ -17,6 +18,8 @@ public class EdificationProducer {
         switch (tipo){
             case "milicia":
                 return new FactoryMilicia();
+            case "edificio":
+                return new FactoryEdificio();
         }
         return null;
     }

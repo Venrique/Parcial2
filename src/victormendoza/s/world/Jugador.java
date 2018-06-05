@@ -5,6 +5,7 @@
  */
 package victormendoza.s.world;
 
+import Creación.Edificio.Edificio;
 import Creación.Milicia.Milicia;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class Jugador {
     private String raza;
     private int recurso1, recurso2, recurso3;
     private ArrayList<Milicia> unidades;
+    private ArrayList<Edificio> edificios;
 
     public String getRaza() {
         return raza;
@@ -40,5 +42,19 @@ public class Jugador {
         }
 
     }
+
+    public ArrayList<Edificio> getEdificios() {
+        return edificios;
+    }
+    
+    public int getCantEdificios(){
+        return edificios.size();
+    }
+
+    public void addEdificio(Edificio edificio){
+        this.edificios.add(edificio);
+    }
+    
+    
 
 }
