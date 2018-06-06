@@ -17,8 +17,8 @@ public class Jugador {
 
     private String raza;
     private int recurso1, recurso2, recurso3;
-    private ArrayList<Milicia> unidades;
-    private ArrayList<Edificio> edificios;
+    private ArrayList<Milicia> unidades = new ArrayList<Milicia>();
+    private ArrayList<Edificio> edificios = new ArrayList<Edificio>();
 
     public String getRaza() {
         return raza;

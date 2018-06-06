@@ -15,18 +15,18 @@ import java.util.Scanner;
  *
  * @author victor
  */
-public class Init {
+public class Ini {
     public static Jugador p1 = new Jugador();
     public static Jugador p2 = new Jugador();
     public static int turnos=0;
     
-    private static Init ini;
+    private static Ini ini;
     
-    private Init(){}
+    private Ini(){}
     
-    public static Init getInstance(){
+    public static Ini getInstance(){
         if(ini == null){
-            ini = new Init();
+            ini = new Ini();
             return ini;
         }else{
             return ini;

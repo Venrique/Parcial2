@@ -15,8 +15,8 @@ public class VictorMendozaSWorld {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Menu prueba = Menu.getInstance();
-        prueba.MenuPrueba();
+       Ini inicializar = Ini.getInstance();
+       inicializar.Iniciar();
     }
     
 }
