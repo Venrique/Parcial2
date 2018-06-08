@@ -58,7 +58,7 @@ public class Ini {
         p1.addEdificio(centro_p1);
         p2.addEdificio(centro_p2);
         
-        Juego();
+       // Juego();
     }
     
     private void Juego(){

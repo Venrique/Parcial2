@@ -7,6 +7,7 @@ package victormendoza.s.world;
 
 import Creación.Edificio.Edificio;
 import Creación.Milicia.Milicia;
+import Creación.Recursos.Recurso;
 import java.util.ArrayList;
 
 /**
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class Jugador {
 
     private String raza;
-    private int recurso1, recurso2, recurso3;
+    private ArrayList<Recurso> recursos;
     private ArrayList<Milicia> unidades = new ArrayList<Milicia>();
     private ArrayList<Edificio> edificios = new ArrayList<Edificio>();
 
