@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package Creación.Edificio;
-
+import Creación.Recursos.Recurso;
+import java.util.ArrayList;
 /**
  *
  * @author victor
  */
 public class CentroMando implements Edificio {
-    int vida = 1000;
-    int nivel = 1;
+    private int vida = 1000;
+    private int nivel = 1;
+    private ArrayList<Recurso> recursos = new ArrayList<Recurso>();
+    
     
     @Override
     public void GenerarRecurso() {
@@ -21,6 +24,11 @@ public class CentroMando implements Edificio {
     @Override
     public void GenerarMilicia() {
        
+    }
+
+    @Override
+    public void GuardarRecurso(ArrayList<Recurso> recurso) {
+        this.recursos = recurso;
     }
     
 }

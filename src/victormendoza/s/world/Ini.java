@@ -16,9 +16,9 @@ import java.util.Scanner;
  * @author victor
  */
 public class Ini {
-    public static Jugador p1 = new Jugador();
-    public static Jugador p2 = new Jugador();
-    public static int turnos=0;
+    public Jugador p1 = new Jugador();
+    public Jugador p2 = new Jugador();
+    public int turnos=0;
     
     private static Ini ini;
     
@@ -40,13 +40,13 @@ public class Ini {
         Scanner input = new Scanner(System.in);
 
         System.out.println("♦•♦ JUEGO INICIADO ♦•♦");
-        System.out.println("\n •RAZAS•");
+        System.out.println("\n•RAZAS•");
         System.out.println("1. Humano: Stats normales.");
         System.out.println("2. Alien: Más daño pero menos vida.");
         System.out.println("3. Robot: Unidades más rápidas. ");
-        System.out.println("\n Jugador 1 escoja su raza:");
+        System.out.println("\nJugador 1 escoja su raza:");
         p1.setRaza(input.nextInt());
-        System.out.println("\n Jugador 2 escoja su raza:");
+        System.out.println("\nJugador 2 escoja su raza:");
         p2.setRaza(input.nextInt());
         
         AbstractEdificationFactory factory;
@@ -58,15 +58,31 @@ public class Ini {
         p1.addEdificio(centro_p1);
         p2.addEdificio(centro_p2);
         
-       // Juego();
+        Juego();
     }
     
     private void Juego(){
-        int bandera = 0;
+        byte bandera = 0;
         Scanner input = new Scanner(System.in);
+        int contador = 0;
         
         while(p1.getCantEdificios()!=0 && p2.getCantEdificios()!=0){
-            
+            System.out.println("\n.\n.\n.\n|| FASE #"+contador+" ||");
+            if(bandera==0){
+                
+                System.out.println("\nTurno del jugador 1:");
+                Menu menu = Menu.getInstance();
+                menu.MenuPrincipal();
+                
+                bandera=1;
+                contador++;
+            }else{
+                
+                System.out.println("\nTurno del jugador 2:");
+                
+                bandera=0;
+                contador++;
+            }
         }
     }
 }

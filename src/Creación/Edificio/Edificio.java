@@ -5,11 +5,15 @@
  */
 package Creación.Edificio;
 
+import Creación.Recursos.Recurso;
+import java.util.ArrayList;
+
 /**
  *
  * @author victor
  */
 public interface Edificio {
-    void GenerarRecurso();
-    void GenerarMilicia();
+    public void GenerarRecurso();
+    public void GenerarMilicia();
+    public void GuardarRecurso(ArrayList<Recurso> recurso);
 }

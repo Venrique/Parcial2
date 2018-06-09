@@ -17,13 +17,8 @@ import java.util.ArrayList;
 public class Jugador {
 
     private String raza;
-    private ArrayList<Recurso> recursos;
     private ArrayList<Milicia> unidades = new ArrayList<Milicia>();
     private ArrayList<Edificio> edificios = new ArrayList<Edificio>();
-
-    public String getRaza() {
-        return raza;
-    }
 
     public void setRaza(int raza) {
         switch (raza) {
@@ -44,18 +39,20 @@ public class Jugador {
 
     }
 
+    public String getRaza() {
+        return raza;
+    }
+
     public ArrayList<Edificio> getEdificios() {
         return edificios;
     }
-    
-    public int getCantEdificios(){
+
+    public int getCantEdificios() {
         return edificios.size();
     }
 
-    public void addEdificio(Edificio edificio){
+    public void addEdificio(Edificio edificio) {
         this.edificios.add(edificio);
     }
-    
-    
 
 }
