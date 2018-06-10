@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author victor
  */
 public interface Edificio {
-    public void GenerarRecurso();
-    public void GenerarMilicia();
+    public void Generar();
     public void GuardarRecurso(ArrayList<Recurso> recurso);
+    public ArrayList<Recurso> getRecursos();
 }

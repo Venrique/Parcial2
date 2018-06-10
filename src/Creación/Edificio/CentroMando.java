@@ -17,18 +17,20 @@ public class CentroMando implements Edificio {
     
     
     @Override
-    public void GenerarRecurso() {
+    public void Generar() {
        
     }
-
-    @Override
-    public void GenerarMilicia() {
-       
-    }
-
+    
     @Override
     public void GuardarRecurso(ArrayList<Recurso> recurso) {
         this.recursos = recurso;
     }
+
+    @Override
+    public ArrayList<Recurso> getRecursos() {
+        return recursos;
+    }
+
+    
     
 }

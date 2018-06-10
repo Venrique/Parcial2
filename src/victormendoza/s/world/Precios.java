@@ -22,9 +22,9 @@ public class Precios {
         precios.put("MinaR1", new int[]{400, 50, 0});
         precios.put("MinaR2", new int[]{600, 100, 0});
         precios.put("MinaR3", new int[]{1200, 800, 0});
-        precios.put("CampoEntrenamiento", new int[]{300, 100, 0});
+        precios.put("CampoEntrenamiento", new int[]{300, 100, 50});
         precios.put("FabricaVehiculo", new int[]{400, 400, 200});
-        precios.put("Escuadron", new int[]{100, 100, 100});
+        precios.put("Escuadron", new int[]{100, 100, 0});
         precios.put("Especialista", new int[]{50, 800, 500});
         precios.put("Vehiculo1", new int[]{1000, 1000, 500});
         precios.put("Vehiculo2", new int[]{500, 3000, 5000});
@@ -40,9 +40,12 @@ public class Precios {
         }
     }
     
-    public int[] getPrecio(String construccion){
+    public String getPrecioS(String construccion){
+        int[] price = precios.get(construccion);
+        return "("+price[0]+","+price[1]+","+price[2]+")";
+    }
+    
+    public int[] getPrecioI(String construccion){
         return precios.get(construccion);
     }
-
-    
 }

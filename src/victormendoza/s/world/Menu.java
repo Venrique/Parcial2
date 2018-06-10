@@ -32,7 +32,7 @@ public class Menu {
 
     }
 
-    public void MenuPrincipal() {
+    public void MenuPrincipal(byte jugador) {
 
         Scanner input = new Scanner(System.in);
         int opcion;
@@ -57,7 +57,7 @@ public class Menu {
                         break;
                     case 2:
                         bandera=1;
-                        MenuEdificacion();
+                        MenuEdificacion(jugador);
                         break;
                     case 3:
                         ini.p1.getEdificios().remove(0);
@@ -95,27 +95,34 @@ public class Menu {
         System.out.println(mili.getAtaque());
     }
 
-    private void MenuEdificacion() {
+    private void MenuEdificacion(byte jugador) {
         Scanner input = new Scanner(System.in);
         int opcion;
         byte bandera = 0;
         
         Precios precios = Precios.getInstace();
+        Ini ini = Ini.getInstance();
+        Validaciones val = Validaciones.getInstance();
 
         while (bandera==0) {
             try {
                 System.out.println("\n¿Qué edificación desea construir?");
-                System.out.println("1. Mina de recurso 1. Costo: "+precios.getPrecio("MinaR1"));
-                System.out.println("2. Mina de recurso 2. Costo: "+precios.getPrecio("MinaR2"));
-                System.out.println("3. Mina de recurso 3. Costo: "+precios.getPrecio("MinaR3"));
-                System.out.println("4. Escuela militar. Costo: "+precios.getPrecio("CampoEntrenamiento"));
-                System.out.println("5. Fabrica de vehiculos. Costo: "+precios.getPrecio("FabricaVehiculo"));
+                System.out.println("1. Mina de recurso 1. Costo: "+precios.getPrecioS("MinaR1"));
+                System.out.println("2. Mina de recurso 2. Costo: "+precios.getPrecioS("MinaR2"));
+                System.out.println("3. Mina de recurso 3. Costo: "+precios.getPrecioS("MinaR3"));
+                System.out.println("4. Escuela militar. Costo: "+precios.getPrecioS("CampoEntrenamiento"));
+                System.out.println("5. Fabrica de vehiculos. Costo: "+precios.getPrecioS("FabricaVehiculo"));
                 System.out.println("6. Regresar.");
                 System.out.print("--Seleccione una opción: ");
                 opcion = input.nextInt();
                 
                 switch (opcion){
                     case 1:
+                        if(val.ValidarRecursos(jugador,"MinaR1")){
+                            
+                        }else{
+                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                        }
                         break;
                     case 2:
                         break;
@@ -136,6 +143,6 @@ public class Menu {
                 System.err.println("No seleccinó una opción válida. Intentelo de nuevo.");
             }
         }
-        MenuPrincipal();
+        MenuPrincipal(jugador);
     }
 }
