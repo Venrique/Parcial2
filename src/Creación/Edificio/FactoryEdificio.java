@@ -24,6 +24,12 @@ public class FactoryEdificio implements AbstractEdificationFactory{
         switch (tipo){
             case "centro":
                 return new CentroMando();
+            case "MinaR1":
+                return new Mina1();
+            case "MinaR2":
+                return new Mina2();
+            case "MinaR3":
+                return new Mina3();
                 
         }
         return null;

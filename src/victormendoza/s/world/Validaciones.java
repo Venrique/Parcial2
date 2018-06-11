@@ -29,7 +29,8 @@ public class Validaciones {
     public boolean ValidarRecursos(byte jugador, String construccion) {
         Precios precio = Precios.getInstace();
         Ini ini = Ini.getInstance();
-
+        
+        //SE VERIFICA QUE LOS RECURSOS DEL JUGADOR EN SU CENTRO DE MANDO SEAN MAYORES AL COSTO DE CREACIÓN
         if (jugador == 0) {
             if (ini.p1.getEdificios().get(0).getRecursos().get(0).getCantidad() >= precio.getPrecioI(construccion)[0]) {
                 if (ini.p1.getEdificios().get(0).getRecursos().get(1).getCantidad() >= precio.getPrecioI(construccion)[1]) {

@@ -4,26 +4,18 @@
  * and open the template in the editor.
  */
 package Creación.Edificio;
+
 import Creación.Recursos.Recurso;
+import Creación.Recursos.Recursos;
 import java.util.ArrayList;
+
 /**
  *
  * @author victor
  */
-public class CentroMando implements Edificio {
-    private int vida = 1000;
-    private int nivel = 1;
-    private ArrayList<Recurso> recursos = new ArrayList<Recurso>();
+public class Mina1 implements Edificio{
     
-    @Override
-    public void GuardarRecurso(ArrayList<Recurso> recurso) {
-        this.recursos = recurso;
-    }
-
-    @Override
-    public ArrayList<Recurso> getRecursos() {
-        return recursos;
-    }
+    private Recursos recurso;
 
     @Override
     public void Generar() {
@@ -31,10 +23,21 @@ public class CentroMando implements Edificio {
     }
 
     @Override
-    public void AsignarRecurso() {
+    public void GuardarRecurso(ArrayList<Recurso> recurso) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public ArrayList<Recurso> getRecursos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void AsignarRecurso() {
+        
+    }
+
     
+  
     
 }

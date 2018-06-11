@@ -7,6 +7,7 @@ package victormendoza.s.world;
 
 import Creación.AbstractEdificationFactory;
 import Creación.EdificationProducer;
+import Creación.Edificio.Edificio;
 import Creación.Milicia.Milicia;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -103,6 +104,8 @@ public class Menu {
         Precios precios = Precios.getInstace();
         Ini ini = Ini.getInstance();
         Validaciones val = Validaciones.getInstance();
+        
+        AbstractEdificationFactory factory;
 
         while (bandera==0) {
             try {
@@ -119,7 +122,13 @@ public class Menu {
                 switch (opcion){
                     case 1:
                         if(val.ValidarRecursos(jugador,"MinaR1")){
-                            
+                            factory = EdificationProducer.getFactory("edificio");
+                            Edificio mina1 = factory.getEdificio("MinaR1");
+                            if(jugador==0){
+                                ini.p1.addEdificio(mina1);
+                            }else{
+                                ini.p2.addEdificio(mina1);
+                            }
                         }else{
                             System.err.println("No tiene suficientes recursos para construir la edificación");
                         }

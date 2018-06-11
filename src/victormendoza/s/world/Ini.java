@@ -51,7 +51,8 @@ public class Ini {
         p1.setRaza(input.nextInt());
         System.out.println("\nJugador 2 escoja su raza:");
         p2.setRaza(input.nextInt());
-
+        
+        //SE CREAN LOS CENTROS DE MANDO PARA CADA JUGADOR
         AbstractEdificationFactory factory;
 
         factory = EdificationProducer.getFactory("edificio");
@@ -61,6 +62,7 @@ public class Ini {
         p1.addEdificio(centro_p1);
         p2.addEdificio(centro_p2);
         
+        //SE AÑADEN LOS RECURSOS INICIALES A CADA JUGADOR DEPENDIENDO DE SU RAZA
         RecursoBuilder recursoBuilder = new RecursoBuilder();
         
         if(p1.getRaza()=="humano"){
