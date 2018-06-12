@@ -5,6 +5,9 @@
  */
 package Creación.Edificio;
 
+import Creación.Recursos.R1A_Paladio;
+import Creación.Recursos.R1H_Madera;
+import Creación.Recursos.R1R_Transistor;
 import Creación.Recursos.Recurso;
 import Creación.Recursos.Recursos;
 import java.util.ArrayList;
@@ -19,7 +22,7 @@ public class Mina1 implements Edificio{
 
     @Override
     public void Generar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        recurso.addCantidad(50);
     }
 
     @Override
@@ -33,8 +36,14 @@ public class Mina1 implements Edificio{
     }
 
     @Override
-    public void AsignarRecurso() {
-        
+    public void AsignarRecurso(String raza) {
+        if(raza=="humano"){
+            this.recurso = new R1H_Madera();
+        }else if(raza=="alien"){
+            this.recurso = new R1A_Paladio();
+        }else{
+            this.recurso = new R1R_Transistor();
+        }
     }
 
     

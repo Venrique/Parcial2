@@ -125,8 +125,10 @@ public class Menu {
                             factory = EdificationProducer.getFactory("edificio");
                             Edificio mina1 = factory.getEdificio("MinaR1");
                             if(jugador==0){
+                                mina1.AsignarRecurso(ini.p1.getRaza());
                                 ini.p1.addEdificio(mina1);
                             }else{
+                                mina1.AsignarRecurso(ini.p1.getRaza());
                                 ini.p2.addEdificio(mina1);
                             }
                         }else{

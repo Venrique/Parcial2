@@ -27,11 +27,10 @@ public class CentroMando implements Edificio {
 
     @Override
     public void Generar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void AsignarRecurso() {
+    public void AsignarRecurso(String raza) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

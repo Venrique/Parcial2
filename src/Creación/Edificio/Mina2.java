@@ -5,6 +5,9 @@
  */
 package Creación.Edificio;
 
+import Creación.Recursos.R2A_Oricalco;
+import Creación.Recursos.R2H_Piedra;
+import Creación.Recursos.R2R_Electricidad;
 import Creación.Recursos.Recurso;
 import Creación.Recursos.Recursos;
 import java.util.ArrayList;
@@ -33,8 +36,14 @@ public class Mina2 implements Edificio {
     }
 
     @Override
-    public void AsignarRecurso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AsignarRecurso(String raza) {
+        if(raza=="humano"){
+            this.recurso = new R2H_Piedra();
+        }else if(raza=="alien"){
+            this.recurso = new R2A_Oricalco();
+        }else{
+            this.recurso = new R2R_Electricidad();
+        }
     }
 
 

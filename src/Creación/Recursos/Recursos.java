@@ -32,7 +32,9 @@ public abstract class Recursos implements Recurso {
     
     @Override
     public void addCantidad(int cantidad){
+        
         this.cantidad=this.cantidad+cantidad;
+        
     };
 
     @Override

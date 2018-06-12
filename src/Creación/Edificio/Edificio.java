@@ -16,5 +16,5 @@ public interface Edificio {
     public void Generar();
     public void GuardarRecurso(ArrayList<Recurso> recurso);
     public ArrayList<Recurso> getRecursos();
-    public void AsignarRecurso();
+    public void AsignarRecurso(String raza);
 }

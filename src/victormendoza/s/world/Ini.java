@@ -11,6 +11,7 @@ import Creación.Edificio.Edificio;
 import Creación.Milicia.Milicia;
 import Creación.Recursos.PaqueteRecursos;
 import Creación.Recursos.RecursoBuilder;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -119,8 +120,12 @@ public class Ini {
 
         while (p1.getCantEdificios() != 0 && p2.getCantEdificios() != 0) {
             System.out.println("\n.\n.\n.\n|| FASE #" + contador + " ||");
-
-            System.out.println("\nTurno del jugador " + bandera + 1);
+            
+            for(Edificio i : ini.p1.getEdificios()){
+                i.Generar();
+            }
+            
+            System.out.println("\nTurno del jugador " + (bandera + 1));
             Menu menu = Menu.getInstance();
             menu.MenuPrincipal(bandera);
 
