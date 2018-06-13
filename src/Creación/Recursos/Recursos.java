@@ -41,4 +41,9 @@ public abstract class Recursos implements Recurso {
     public void addMultiplicador(int multi){
         this.multiplicador=this.multiplicador+multi;
     };
+    
+    @Override
+    public void restar(int cantidad){
+        this.cantidad=this.cantidad-cantidad;
+    };
 }

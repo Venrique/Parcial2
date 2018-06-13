@@ -15,4 +15,5 @@ public interface Recurso {
     public int getMultiplicador();
     public void addCantidad(int cantidad);
     public void addMultiplicador(int multi);
+    public void restar(int cantidad);
 }

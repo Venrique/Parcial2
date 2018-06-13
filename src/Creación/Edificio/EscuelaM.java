@@ -5,9 +5,6 @@
  */
 package Creación.Edificio;
 
-import Creación.Recursos.R3A_Adamantita;
-import Creación.Recursos.R3H_Metal;
-import Creación.Recursos.R3R_Plasma;
 import Creación.Recursos.Recurso;
 import java.util.ArrayList;
 
@@ -15,16 +12,13 @@ import java.util.ArrayList;
  *
  * @author victor
  */
-public class Mina3 implements Edificio {
-
-    private Recurso recurso;
-    private int uso = -1;
-    private String nombre = "Mina3";
-
+public class EscuelaM implements Edificio {
+    
+    private String nombre = "EscuelaM";
+    
     @Override
     public void Generar() {
-        recurso.addCantidad(50);
-        System.out.println("Recurso3: "+recurso.getCantidad());
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -38,31 +32,18 @@ public class Mina3 implements Edificio {
     }
 
     @Override
-
     public void AsignarRecurso(String raza) {
-        if (raza == "humano") {
-            this.recurso = new R3H_Metal();
-        } else if (raza == "alien") {
-            this.recurso = new R3A_Adamantita();
-        } else {
-            this.recurso = new R3R_Plasma();
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public boolean TiempoConstruccion() {
-        if(uso==0){
-            uso+=1;
-            return true;
-        }else{
-            uso+=1;
-            return false;
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void RestarRecurso(int cantidad) {
-        recurso.restar(cantidad);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -72,7 +53,7 @@ public class Mina3 implements Edificio {
 
     @Override
     public Recurso getRecursoM() {
-        return recurso;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

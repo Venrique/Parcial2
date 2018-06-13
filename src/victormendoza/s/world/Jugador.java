@@ -19,6 +19,9 @@ public class Jugador {
     private String raza;
     private ArrayList<Milicia> unidades = new ArrayList<Milicia>();
     private ArrayList<Edificio> edificios = new ArrayList<Edificio>();
+    
+    private ArrayList<Milicia> unidadesC = new ArrayList<Milicia>();
+    private ArrayList<Edificio> edificiosC = new ArrayList<Edificio>();
 
     public void setRaza(int raza) {
         switch (raza) {
@@ -46,13 +49,27 @@ public class Jugador {
     public ArrayList<Edificio> getEdificios() {
         return edificios;
     }
+    
+    public ArrayList<Edificio> getEdificiosC() {
+        return edificiosC;
+    }
 
     public int getCantEdificios() {
         return edificios.size();
     }
+    
+    public int getCantEdificiosC() {
+        return edificiosC.size();
+    }
+
 
     public void addEdificio(Edificio edificio) {
         this.edificios.add(edificio);
     }
-
+    
+    public void addEdificioC(Edificio edificio) {
+        this.edificiosC.add(edificio);
+    }
+    
+    
 }

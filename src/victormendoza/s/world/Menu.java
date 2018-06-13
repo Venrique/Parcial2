@@ -8,6 +8,7 @@ package victormendoza.s.world;
 import Creación.AbstractEdificationFactory;
 import Creación.EdificationProducer;
 import Creación.Edificio.Edificio;
+import Creación.Edificio.Mina1;
 import Creación.Milicia.Milicia;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -36,7 +37,7 @@ public class Menu {
     public void MenuPrincipal(byte jugador) {
 
         Scanner input = new Scanner(System.in);
-        int opcion;
+        int opcion,m1,m2;
         byte bandera = 0;
         
         Ini ini = Ini.getInstance();
@@ -66,6 +67,27 @@ public class Menu {
                     case 4:
                         break;
                     case 5:
+                        if(jugador==0){
+                            for(Edificio e : ini.p1.getEdificiosC()){
+                                if(e.getNombre()=="Mina1"){
+                                    ini.p1.getEdificiosC().get(0).getRecursos().get(0).addCantidad(e.getRecursoM().getCantidad());
+                                    e.RestarRecurso(e.getRecursoM().getCantidad());
+                                }else if(e.getNombre()=="Mina2"){
+                                    ini.p1.getEdificiosC().get(0).getRecursos().get(1).addCantidad(e.getRecursoM().getCantidad());
+                                    e.RestarRecurso(e.getRecursoM().getCantidad());
+                                }
+                            }
+                        }else{
+                            for(Edificio e : ini.p2.getEdificiosC()){
+                                if(e.getNombre()=="Mina1"){
+                                    ini.p2.getEdificiosC().get(0).getRecursos().get(0).addCantidad(e.getRecursoM().getCantidad());
+                                    e.RestarRecurso(e.getRecursoM().getCantidad());
+                                }else if(e.getNombre()=="Mina2"){
+                                    ini.p2.getEdificiosC().get(0).getRecursos().get(1).addCantidad(e.getRecursoM().getCantidad());
+                                    e.RestarRecurso(e.getRecursoM().getCantidad());
+                                }
+                            }
+                        }
                         break;
                     case 6: 
                         bandera=1;
@@ -127,6 +149,7 @@ public class Menu {
                             if(jugador==0){
                                 mina1.AsignarRecurso(ini.p1.getRaza());
                                 ini.p1.addEdificio(mina1);
+                                
                             }else{
                                 mina1.AsignarRecurso(ini.p1.getRaza());
                                 ini.p2.addEdificio(mina1);
@@ -136,8 +159,34 @@ public class Menu {
                         }
                         break;
                     case 2:
+                        if(val.ValidarRecursos(jugador,"MinaR2")){
+                            factory = EdificationProducer.getFactory("edificio");
+                            Edificio mina2 = factory.getEdificio("MinaR2");
+                            if(jugador==0){
+                                mina2.AsignarRecurso(ini.p1.getRaza());
+                                ini.p1.addEdificio(mina2);
+                            }else{
+                                mina2.AsignarRecurso(ini.p1.getRaza());
+                                ini.p2.addEdificio(mina2);
+                            }
+                        }else{
+                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                        }
                         break;
-                    case 3: 
+                    case 3:
+                        if(val.ValidarRecursos(jugador,"MinaR3")){
+                            factory = EdificationProducer.getFactory("edificio");
+                            Edificio mina3 = factory.getEdificio("MinaR3");
+                            if(jugador==0){
+                                mina3.AsignarRecurso(ini.p1.getRaza());
+                                ini.p1.addEdificio(mina3);
+                            }else{
+                                mina3.AsignarRecurso(ini.p1.getRaza());
+                                ini.p2.addEdificio(mina3);
+                            }
+                        }else{
+                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                        }
                         break;
                     case 4:
                         break;

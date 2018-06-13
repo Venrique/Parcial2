@@ -19,10 +19,13 @@ import java.util.ArrayList;
 public class Mina2 implements Edificio {
     
     private Recursos recurso;
+    private int uso = -1;
+    private String nombre = "Mina2";
     
     @Override
     public void Generar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        recurso.addCantidad(50);
+        System.out.println("Recurso2: "+recurso.getCantidad());
     }
 
     @Override
@@ -44,6 +47,32 @@ public class Mina2 implements Edificio {
         }else{
             this.recurso = new R2R_Electricidad();
         }
+    }
+
+    @Override
+    public boolean TiempoConstruccion() {
+        if(uso==0){
+            uso+=1;
+            return true;
+        }else{
+            uso+=1;
+            return false;
+        }
+    }
+
+    @Override
+    public void RestarRecurso(int cantidad) {
+        recurso.restar(cantidad);
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public Recurso getRecursoM() {
+        return recurso;
     }
 
 

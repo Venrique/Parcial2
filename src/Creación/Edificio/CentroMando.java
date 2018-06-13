@@ -14,6 +14,7 @@ public class CentroMando implements Edificio {
     private int vida = 1000;
     private int nivel = 1;
     private ArrayList<Recurso> recursos = new ArrayList<Recurso>();
+    private String nombre="centro";
     
     @Override
     public void GuardarRecurso(ArrayList<Recurso> recurso) {
@@ -31,6 +32,26 @@ public class CentroMando implements Edificio {
 
     @Override
     public void AsignarRecurso(String raza) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean TiempoConstruccion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void RestarRecurso(int cantidad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public Recurso getRecursoM() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

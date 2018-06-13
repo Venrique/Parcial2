@@ -16,13 +16,17 @@ import java.util.ArrayList;
  *
  * @author victor
  */
-public class Mina1 implements Edificio{
-    
+public class Mina1 implements Edificio {
+
     private Recursos recurso;
+    private int uso = -1;
+    private String nombre="Mina1";
 
     @Override
     public void Generar() {
+
         recurso.addCantidad(50);
+        System.out.println("Recurso1: "+recurso.getCantidad());
     }
 
     @Override
@@ -37,16 +41,39 @@ public class Mina1 implements Edificio{
 
     @Override
     public void AsignarRecurso(String raza) {
-        if(raza=="humano"){
+        if (raza == "humano") {
             this.recurso = new R1H_Madera();
-        }else if(raza=="alien"){
+        } else if (raza == "alien") {
             this.recurso = new R1A_Paladio();
-        }else{
+        } else {
             this.recurso = new R1R_Transistor();
         }
     }
 
-    
-  
-    
+    @Override
+    public boolean TiempoConstruccion() {
+        if(uso==0){
+            uso+=1;
+            return true;
+        }else{
+            uso+=1;
+            return false;
+        }
+    }
+
+    @Override
+    public void RestarRecurso(int cantidad) {
+        recurso.restar(cantidad);
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public Recurso getRecursoM() {
+        return recurso;
+    }
+
 }
