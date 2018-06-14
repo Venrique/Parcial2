@@ -47,7 +47,7 @@ public class Ini {
         System.out.println("\n•RAZAS•");
         System.out.println("1. Humano: Stats normales.");
         System.out.println("2. Alien: Más daño pero menos vida.");
-        System.out.println("3. Robot: Unidades más rápidas. ");
+        System.out.println("3. Robot: Unidades más rápidas pero menos daño. ");
         System.out.println("\nJugador 1 escoja su raza:");
         p1.setRaza(input.nextInt());
         System.out.println("\nJugador 2 escoja su raza:");
@@ -68,9 +68,9 @@ public class Ini {
 
         if (p1.getRaza() == "humano") {
             PaqueteRecursos recursosH = recursoBuilder.recursosHumanos();
-            recursosH.getListaRecurso().get(0).addCantidad(500);
-            recursosH.getListaRecurso().get(1).addCantidad(150);
-            recursosH.getListaRecurso().get(2).addCantidad(50);
+            recursosH.getListaRecurso().get(0).addCantidad(5000);
+            recursosH.getListaRecurso().get(1).addCantidad(1500);
+            recursosH.getListaRecurso().get(2).addCantidad(500);
             p1.getEdificiosC().get(0).GuardarRecurso(recursosH.getListaRecurso());
 
         } else if (p1.getRaza() == "alien") {
@@ -89,9 +89,9 @@ public class Ini {
 
         if (p2.getRaza() == "humano") {
             PaqueteRecursos recursosH = recursoBuilder.recursosHumanos();
-            recursosH.getListaRecurso().get(0).addCantidad(500);
-            recursosH.getListaRecurso().get(1).addCantidad(150);
-            recursosH.getListaRecurso().get(2).addCantidad(50);
+            recursosH.getListaRecurso().get(0).addCantidad(5000);
+            recursosH.getListaRecurso().get(1).addCantidad(1500);
+            recursosH.getListaRecurso().get(2).addCantidad(500);
             p2.getEdificiosC().get(0).GuardarRecurso(recursosH.getListaRecurso());
 
         } else if (p2.getRaza() == "alien") {

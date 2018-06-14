@@ -13,6 +13,6 @@ import Creación.Milicia.Milicia;
  * @author victor
  */
 public interface AbstractEdificationFactory {
-    Milicia getMilicia(String tipo);
+    Milicia getMilicia(String tipo,String tropa);
     Edificio getEdificio(String tipo);
 }

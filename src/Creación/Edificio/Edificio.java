@@ -23,4 +23,6 @@ public interface Edificio {
     public void RestarRecurso(int cantidad);
     public String getNombre();
     public void addMilicia(Milicia milicia);
+    public String getStats();
+    public ArrayList<Milicia> getUnidades();
 }

@@ -10,8 +10,11 @@ import Creación.EdificationProducer;
 import Creación.Edificio.Edificio;
 import Creación.Edificio.Mina1;
 import Creación.Milicia.Milicia;
+import static java.lang.Thread.sleep;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,6 +59,39 @@ public class Menu {
 
                 switch (opcion) {
                     case 1:
+                        System.out.println("\n\n- - - Jugador 1 - - -");
+                        System.out.println("Edificaciones: ");
+                        for (Edificio e : ini.p1.getEdificiosC()) {
+                            System.out.println(e.getStats());
+                        }
+                        if(jugador==0){
+                            System.out.println("Tropas:");
+                            for(Edificio e : ini.p1.getEdificiosC()){
+                                if(e.getNombre().equals("EscuelaM")){
+                                    for(Milicia m : e.getUnidades()){
+                                        System.out.println(m);
+                                    }
+                                }
+                            }
+                        }
+                        
+                        
+                        System.out.println("\n- - - Jugador 2 - - -");
+                        System.out.println("Edificaciones: ");
+                        for (Edificio e : ini.p2.getEdificiosC()) {
+                            System.out.println(e.getStats());
+                        }
+                        if(jugador==1){
+                            System.out.println("Tropas:");
+                            for(Edificio e : ini.p2.getEdificiosC()){
+                                if(e.getNombre().equals("EscuelaM")){
+                                    for(Milicia m : e.getUnidades()){
+                                        System.out.println(m);
+                                    }
+                                }
+                            }
+                        }
+                        sleep(3000);
                         break;
                     case 2:
                         bandera = 1;
@@ -65,6 +101,18 @@ public class Menu {
                         int bandera2 = 5;
                         if (jugador == 0) {
                             for (Edificio e : ini.p1.getEdificiosC()) {
+                                if(e.getNombre().equals("EscuelaM")){
+                                    bandera2=-1;
+                                }
+                            }
+                            if(bandera2==5){
+                                System.out.println("Error: Debe crear una escuela militar primero.");
+                            }else{
+                                bandera=1;
+                                MenuTropas(jugador);
+                            }
+                        }else{
+                            for (Edificio e : ini.p2.getEdificiosC()) {
                                 if(e.getNombre().equals("EscuelaM")){
                                     bandera2=-1;
                                 }
@@ -112,24 +160,10 @@ public class Menu {
 
             } catch (InputMismatchException e) {
                 System.err.println("No seleccinó una opción válida. Intentelo de nuevo.");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }
-
-    public void MenuPrueba() {
-        Scanner input = new Scanner(System.in);
-        String cosa, raza;
-        System.out.println("Escriba que desea generar:");
-        cosa = input.nextLine();
-        System.out.println("Escriba la raza:");
-        raza = input.nextLine();
-
-        AbstractEdificationFactory factory;
-
-        factory = EdificationProducer.getFactory(cosa);
-        Milicia mili = factory.getMilicia(raza);
-        mili.Atacar();
-        System.out.println(mili.getAtaque());
     }
 
     private void MenuEdificacion(byte jugador) {
@@ -259,27 +293,92 @@ public class Menu {
                             factory = EdificationProducer.getFactory("milicia");
                             
                             if (jugador == 0) {
-                                Milicia escuadron = factory.getMilicia(ini.p1.getRaza());
+                                Milicia escuadron = factory.getMilicia(ini.p1.getRaza(),"Escuadron");
                                 for(Edificio e : ini.p1.getEdificiosC()){
                                     if(e.getNombre().equals("EscuelaM")){
-                                        
+                                        e.addMilicia(escuadron);
                                     }
                                 }
                             } else {
-                                ini.p2.addEdificio(escuela);
+                                Milicia escuadron = factory.getMilicia(ini.p2.getRaza(),"Escuadron");
+                                for(Edificio e : ini.p2.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(escuadron);
+                                    }
+                                }
                             }
                         } else {
-                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                            System.err.println("No tiene suficientes recursos para construir el escuadrón");
                         }
                         break;
                     case 2:
-                        
+                        if (val.ValidarRecursos(jugador, "Especialista")) {
+                            factory = EdificationProducer.getFactory("milicia");
+                            
+                            if (jugador == 0) {
+                                Milicia especialista = factory.getMilicia(ini.p1.getRaza(),"Especialista");
+                                for(Edificio e : ini.p1.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(especialista);
+                                    }
+                                }
+                            } else {
+                                Milicia especialista = factory.getMilicia(ini.p2.getRaza(),"Especialista");
+                                for(Edificio e : ini.p2.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(especialista);
+                                    }
+                                }
+                            }
+                        } else {
+                            System.err.println("No tiene suficientes recursos para construir el especialista");
+                        }
                         break;
                     case 3:
-                        
+                        if (val.ValidarRecursos(jugador, "Vehiculo1")) {
+                            factory = EdificationProducer.getFactory("milicia");
+                            
+                            if (jugador == 0) {
+                                Milicia vehiculo1 = factory.getMilicia(ini.p1.getRaza(),"Vehiculo1");
+                                for(Edificio e : ini.p1.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(vehiculo1);
+                                    }
+                                }
+                            } else {
+                                Milicia vehiculo1 = factory.getMilicia(ini.p2.getRaza(),"Especialista");
+                                for(Edificio e : ini.p2.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(vehiculo1);
+                                    }
+                                }
+                            }
+                        } else {
+                            System.err.println("No tiene suficientes recursos para construir el vehículo");
+                        }
                         break;
                     case 4:
-                       
+                       if (val.ValidarRecursos(jugador, "Vehiculo2")) {
+                            factory = EdificationProducer.getFactory("milicia");
+                            
+                            if (jugador == 0) {
+                                Milicia vehiculo2 = factory.getMilicia(ini.p1.getRaza(),"Vehiculo2");
+                                for(Edificio e : ini.p1.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(vehiculo2);
+                                    }
+                                }
+                            } else {
+                                Milicia vehiculo2 = factory.getMilicia(ini.p2.getRaza(),"Especialista");
+                                for(Edificio e : ini.p2.getEdificiosC()){
+                                    if(e.getNombre().equals("EscuelaM")){
+                                        e.addMilicia(vehiculo2);
+                                    }
+                                }
+                            }
+                        } else {
+                            System.err.println("No tiene suficientes recursos para construir el vehículo");
+                        }
                         break;
                     case 5:
                         bandera = 1;

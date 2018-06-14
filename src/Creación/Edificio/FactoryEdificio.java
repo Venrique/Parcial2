@@ -15,7 +15,7 @@ import Creación.Milicia.Milicia;
 public class FactoryEdificio implements AbstractEdificationFactory{
 
     @Override
-    public Milicia getMilicia(String tipo) {
+    public Milicia getMilicia(String tipo,String tropa) {
         return null;
     }
 

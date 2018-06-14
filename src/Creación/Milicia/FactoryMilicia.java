@@ -15,15 +15,40 @@ import Creación.Edificio.Edificio;
 public class FactoryMilicia implements AbstractEdificationFactory {
 
     @Override
-    public Milicia getMilicia(String tipo) {
+    public Milicia getMilicia(String tipo,String tropa) {
         switch (tipo){
             case "humano":
                 //vida,turnos,ataque
-                return new Escuadron(300,2,75);
+                if(tropa.equals("Escuadron")){
+                    return new Escuadron(300,-1,75);
+                }else if(tropa.equals("Especialista")){
+                    return new Escuadron(100,-1,200);
+                }else if(tropa.equals("Vehiculo1")){
+                    return new Escuadron(500,-2,100);
+                }else if(tropa.equals("Vehiculo2")){
+                    return new Escuadron(800,-3,200);
+                }
+                
             case "alien":
-                return new Escuadron(200,2,125);
+                if(tropa.equals("Escuadron")){
+                    return new Escuadron(200,-1,125);
+                }else if(tropa.equals("Especialista")){
+                    return new Escuadron(75,-1,300);
+                }else if(tropa.equals("Vehiculo1")){
+                    return new Escuadron(400,-2,200);
+                }else if(tropa.equals("Vehiculo2")){
+                    return new Escuadron(700,-3,300);
+                }
             case "robot":
-                return new Escuadron(300,1,75);
+                if(tropa.equals("Escuadron")){
+                    return new Escuadron(300,-1,75);
+                }else if(tropa.equals("Especialista")){
+                    return new Escuadron(100,-1,200);
+                }else if(tropa.equals("Vehiculo1")){
+                    return new Escuadron(500,-1,75);
+                }else if(tropa.equals("Vehiculo2")){
+                    return new Escuadron(800,-2,125);
+                }
         }
         return null;
     }

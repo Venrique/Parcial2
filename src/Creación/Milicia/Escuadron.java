@@ -30,6 +30,7 @@ public class Escuadron implements Milicia {
         System.out.println("Attacks");
     }
     
+    @Override
     public int getAtaque(){
         return ataque;
     }
@@ -38,6 +39,18 @@ public class Escuadron implements Milicia {
         if(vida>0){
             return true;
         }else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean TiempoEntrenar() {
+        if(turnos==0){
+            turnos+=1;
+            System.out.println(turnos);
+            return true;
+        }else{
+            turnos+=1;
             return false;
         }
     }

@@ -61,6 +61,16 @@ public class CentroMando implements Edificio {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public String getStats() {
+        return "Centro de mando(Vida: "+vida+")";
+    }
+
+    @Override
+    public ArrayList<Milicia> getUnidades() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
     
 }

@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * @author victor
  */
 public class Mina1 implements Edificio {
-
+    private int vida = 300;
     private Recursos recurso;
     private int uso = -1;
     private String nombre="Mina1";
@@ -80,6 +80,16 @@ public class Mina1 implements Edificio {
 
     @Override
     public void addMilicia(Milicia milicia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getStats() {
+        return "Mina de recurso 1(Vida: "+vida+")";
+    }
+
+    @Override
+    public ArrayList<Milicia> getUnidades() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

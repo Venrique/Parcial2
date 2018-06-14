@@ -19,10 +19,15 @@ public class EscuelaM implements Edificio {
     private ArrayList<Milicia> unidadesC = new ArrayList<>();
     private ArrayList<Milicia> unidades = new ArrayList<>();
     private int uso = -1;
+    private int vida = 500;
     
     @Override
     public void Generar() {
-       
+       for(Milicia m : unidades){
+           if(m.TiempoEntrenar()){
+               unidadesC.add(m);
+           }
+       }
     }
 
     @Override
@@ -69,6 +74,16 @@ public class EscuelaM implements Edificio {
     @Override
     public void addMilicia(Milicia milicia) {
         unidades.add(milicia);
+    }
+
+    @Override
+    public String getStats() {
+        return "Escuela Militar(Vida: "+vida+")";
+    }
+
+    @Override
+    public ArrayList<Milicia> getUnidades() {
+        return unidadesC;
     }
     
 }
