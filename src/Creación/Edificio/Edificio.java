@@ -5,6 +5,7 @@
  */
 package Creación.Edificio;
 
+import Creación.Milicia.Milicia;
 import Creación.Recursos.Recurso;
 import java.util.ArrayList;
 
@@ -21,4 +22,5 @@ public interface Edificio {
     public boolean TiempoConstruccion();
     public void RestarRecurso(int cantidad);
     public String getNombre();
+    public void addMilicia(Milicia milicia);
 }

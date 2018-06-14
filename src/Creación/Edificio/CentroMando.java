@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Creación.Edificio;
+import Creación.Milicia.Milicia;
 import Creación.Recursos.Recurso;
 import java.util.ArrayList;
 /**
@@ -52,6 +53,11 @@ public class CentroMando implements Edificio {
 
     @Override
     public Recurso getRecursoM() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addMilicia(Milicia milicia) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

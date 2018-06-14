@@ -5,6 +5,7 @@
  */
 package Creación.Edificio;
 
+import Creación.Milicia.Milicia;
 import Creación.Recursos.R1A_Paladio;
 import Creación.Recursos.R1H_Madera;
 import Creación.Recursos.R1R_Transistor;
@@ -54,6 +55,7 @@ public class Mina1 implements Edificio {
     public boolean TiempoConstruccion() {
         if(uso==0){
             uso+=1;
+            System.out.println(uso);
             return true;
         }else{
             uso+=1;
@@ -74,6 +76,11 @@ public class Mina1 implements Edificio {
     @Override
     public Recurso getRecursoM() {
         return recurso;
+    }
+
+    @Override
+    public void addMilicia(Milicia milicia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

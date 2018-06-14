@@ -5,6 +5,7 @@
  */
 package Creación.Edificio;
 
+import Creación.Milicia.Milicia;
 import Creación.Recursos.R3A_Adamantita;
 import Creación.Recursos.R3H_Metal;
 import Creación.Recursos.R3R_Plasma;
@@ -73,6 +74,11 @@ public class Mina3 implements Edificio {
     @Override
     public Recurso getRecursoM() {
         return recurso;
+    }
+
+    @Override
+    public void addMilicia(Milicia milicia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

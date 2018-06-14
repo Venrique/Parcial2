@@ -30,6 +30,8 @@ public class FactoryEdificio implements AbstractEdificationFactory{
                 return new Mina2();
             case "MinaR3":
                 return new Mina3();
+            case "CampoEntrenamiento":
+                return new EscuelaM();
                 
         }
         return null;

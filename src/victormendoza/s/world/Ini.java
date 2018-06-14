@@ -138,7 +138,6 @@ public class Ini {
                 System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
                 System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
                 for (Edificio i : ini.p2.getEdificios()) {
-                    i.Generar();
                     if (i.TiempoConstruccion()) {
                         ini.p2.addEdificioC(i);
 

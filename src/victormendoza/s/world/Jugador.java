@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class Jugador {
 
     private String raza;
-    private ArrayList<Milicia> unidades = new ArrayList<Milicia>();
-    private ArrayList<Edificio> edificios = new ArrayList<Edificio>();
     
-    private ArrayList<Milicia> unidadesC = new ArrayList<Milicia>();
-    private ArrayList<Edificio> edificiosC = new ArrayList<Edificio>();
+    private ArrayList<Edificio> edificios = new ArrayList<>();
+    
+   
+    private ArrayList<Edificio> edificiosC = new ArrayList<>();
 
     public void setRaza(int raza) {
         switch (raza) {

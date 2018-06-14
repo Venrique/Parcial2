@@ -5,6 +5,7 @@
  */
 package Creación.Edificio;
 
+import Creación.Milicia.Milicia;
 import Creación.Recursos.Recurso;
 import java.util.ArrayList;
 
@@ -15,10 +16,13 @@ import java.util.ArrayList;
 public class EscuelaM implements Edificio {
     
     private String nombre = "EscuelaM";
+    private ArrayList<Milicia> unidadesC = new ArrayList<>();
+    private ArrayList<Milicia> unidades = new ArrayList<>();
+    private int uso = -1;
     
     @Override
     public void Generar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
 
     @Override
@@ -32,13 +36,19 @@ public class EscuelaM implements Edificio {
     }
 
     @Override
-    public void AsignarRecurso(String raza) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void AsignarRecurso(String milicia) {
+        
     }
 
     @Override
     public boolean TiempoConstruccion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(uso==0){
+            uso+=1;
+            return true;
+        }else{
+            uso+=1;
+            return false;
+        }
     }
 
     @Override
@@ -54,6 +64,11 @@ public class EscuelaM implements Edificio {
     @Override
     public Recurso getRecursoM() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addMilicia(Milicia milicia) {
+        unidades.add(milicia);
     }
     
 }
