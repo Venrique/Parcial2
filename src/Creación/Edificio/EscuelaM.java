@@ -118,4 +118,20 @@ public class EscuelaM implements Edificio {
         this.vida = vida;
     }
 
+    @Override
+    public void autodefensa() {
+        Milicia mili = null;
+        for (Milicia m : this.atacando) {
+            if (m.getVida() > 0) {
+                m.restarVida(75);
+            } else {
+                mili = m;
+            }
+
+        }
+        if (mili != null) {
+            this.atacando.remove(mili);
+        }
+    }
+
 }

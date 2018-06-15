@@ -31,5 +31,5 @@ public interface Edificio {
     public ArrayList<Milicia> getAtacantesON();
     public int getVida();
     public void setVida(int vida);
-    
+    public void autodefensa();
 }

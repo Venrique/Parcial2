@@ -70,42 +70,42 @@ public class Ini {
 
         if (p1.getRaza() == "humano") {
             PaqueteRecursos recursosH = recursoBuilder.recursosHumanos();
-            recursosH.getListaRecurso().get(0).addCantidad(5000);
-            recursosH.getListaRecurso().get(1).addCantidad(1500);
-            recursosH.getListaRecurso().get(2).addCantidad(5000);
+            recursosH.getListaRecurso().get(0).addCantidad(500);
+            recursosH.getListaRecurso().get(1).addCantidad(200);
+            recursosH.getListaRecurso().get(2).addCantidad(50);
             p1.getEdificiosC().get(0).GuardarRecurso(recursosH.getListaRecurso());
 
         } else if (p1.getRaza() == "alien") {
             PaqueteRecursos recursosA = recursoBuilder.recursosAlien();
             recursosA.getListaRecurso().get(0).addCantidad(500);
-            recursosA.getListaRecurso().get(1).addCantidad(150);
+            recursosA.getListaRecurso().get(1).addCantidad(200);
             recursosA.getListaRecurso().get(2).addCantidad(50);
             p1.getEdificiosC().get(0).GuardarRecurso(recursosA.getListaRecurso());
         } else {
             PaqueteRecursos recursosR = recursoBuilder.recursosRobot();
             recursosR.getListaRecurso().get(0).addCantidad(500);
-            recursosR.getListaRecurso().get(1).addCantidad(150);
+            recursosR.getListaRecurso().get(1).addCantidad(200);
             recursosR.getListaRecurso().get(2).addCantidad(50);
             p1.getEdificiosC().get(0).GuardarRecurso(recursosR.getListaRecurso());
         }
 
         if (p2.getRaza() == "humano") {
             PaqueteRecursos recursosH = recursoBuilder.recursosHumanos();
-            recursosH.getListaRecurso().get(0).addCantidad(5000);
-            recursosH.getListaRecurso().get(1).addCantidad(1500);
-            recursosH.getListaRecurso().get(2).addCantidad(500);
+            recursosH.getListaRecurso().get(0).addCantidad(500);
+            recursosH.getListaRecurso().get(1).addCantidad(200);
+            recursosH.getListaRecurso().get(2).addCantidad(50);
             p2.getEdificiosC().get(0).GuardarRecurso(recursosH.getListaRecurso());
 
         } else if (p2.getRaza() == "alien") {
             PaqueteRecursos recursosA = recursoBuilder.recursosAlien();
             recursosA.getListaRecurso().get(0).addCantidad(500);
-            recursosA.getListaRecurso().get(1).addCantidad(150);
+            recursosA.getListaRecurso().get(1).addCantidad(200);
             recursosA.getListaRecurso().get(2).addCantidad(50);
             p2.getEdificiosC().get(0).GuardarRecurso(recursosA.getListaRecurso());
         } else {
             PaqueteRecursos recursosR = recursoBuilder.recursosRobot();
             recursosR.getListaRecurso().get(0).addCantidad(500);
-            recursosR.getListaRecurso().get(1).addCantidad(150);
+            recursosR.getListaRecurso().get(1).addCantidad(200);
             recursosR.getListaRecurso().get(2).addCantidad(50);
             p2.getEdificiosC().get(0).GuardarRecurso(recursosR.getListaRecurso());
         }
@@ -122,9 +122,9 @@ public class Ini {
             System.out.println("\n.\n.\n.\n|| FASE #" + contador + " ||");
 
             if (bandera == 0) {
-                System.out.println(ini.p1.getEdificiosC().get(0).getRecursos().get(0).getCantidad());
-                System.out.println(ini.p1.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
-                System.out.println(ini.p1.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
+                System.out.println("Recurso 1:"+ini.p1.getEdificiosC().get(0).getRecursos().get(0).getCantidad());
+                System.out.println("Recurso 2:"+ini.p1.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
+                System.out.println("Recurso 3:"+ini.p1.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
                 for (Edificio i : ini.p1.getEdificios()) {
 
                     if (i.TiempoConstruccion()) {
@@ -154,14 +154,15 @@ public class Ini {
                         m.Atacar(e, bandera);
                     }
                     e.Generar();
+                    e.autodefensa();
                 }
 
                 ini.p1.getEdificiosC().removeAll(found);
 
             } else {
-                System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(0).getCantidad());
-                System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
-                System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
+                System.out.println("Recurso 1:"+ini.p2.getEdificiosC().get(0).getRecursos().get(0).getCantidad());
+                System.out.println("Recurso 2:"+ini.p2.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
+                System.out.println("Recurso 3:"+ini.p2.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
                 for (Edificio i : ini.p2.getEdificios()) {
                     if (i.TiempoConstruccion()) {
                         System.out.println(i.getNombre() + " ha terminado de construirse.");
@@ -188,6 +189,7 @@ public class Ini {
                         m.Atacar(e, bandera);
                     }
                     e.Generar();
+                    e.autodefensa();
                 }
                 ini.p2.getEdificiosC().removeAll(found);
             }

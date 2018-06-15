@@ -29,8 +29,8 @@ public class Mina1 implements Edificio {
     @Override
     public void Generar() {
 
-        recurso.addCantidad(50);
-        System.out.println("Recurso1: " + recurso.getCantidad());
+        recurso.addCantidad(100);
+        System.out.println("Mina 1: " + recurso.getCantidad());
     }
 
     @Override
@@ -124,6 +124,22 @@ public class Mina1 implements Edificio {
     @Override
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    @Override
+    public void autodefensa() {
+       Milicia mili = null;
+        for (Milicia m : this.atacando) {
+            if (m.getVida() > 0) {
+                m.restarVida(75);
+            } else {
+                mili = m;
+            }
+
+        }
+        if (mili != null) {
+            this.atacando.remove(mili);
+        }
     }
 
 }

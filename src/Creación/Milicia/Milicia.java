@@ -17,4 +17,6 @@ public interface Milicia {
     public boolean TiempoEntrenar();
     public boolean TiempoAtacar();
     public String getNombre();
+    public void restarVida(int cantidad);
+    public int getVida();
 }

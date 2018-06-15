@@ -26,7 +26,7 @@ public class FactoryMilicia implements AbstractEdificationFactory {
                 if (tropa.equals("Escuadron")) {
                     return new Escuadron(300, -1, 75, "Escuadron" + ini.ids,-1);
                 } else if (tropa.equals("Especialista")) {
-                    return new Escuadron(100, -1, 200, "Especialista" + ini.ids,-1);
+                    return new Escuadron(100, -1, 150, "Especialista" + ini.ids,-1);
                 } else if (tropa.equals("Vehiculo1")) {
                     return new Escuadron(1000, -2, 100, "Tanque M1 Abrams" + ini.ids,-2);
                 } else if (tropa.equals("Vehiculo2")) {
@@ -47,7 +47,7 @@ public class FactoryMilicia implements AbstractEdificationFactory {
                 if (tropa.equals("Escuadron")) {
                     return new Escuadron(300, -1, 75, "Cyborg" + ini.ids,-1);
                 } else if (tropa.equals("Especialista")) {
-                    return new Escuadron(100, -1, 200, "Terminator" + ini.ids,-1);
+                    return new Escuadron(100, -1, 150, "Terminator" + ini.ids,-1);
                 } else if (tropa.equals("Vehiculo1")) {
                     return new Escuadron(500, -1, 75, "Optimus Prime",-2);
                 } else if (tropa.equals("Vehiculo2")) {

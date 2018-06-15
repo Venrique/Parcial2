@@ -69,7 +69,7 @@ public class Menu {
                             for (Edificio e : ini.p1.getEdificiosC()) {
                                 if (e.getNombre().equals("EscuelaM")) {
                                     for (Milicia m : e.getUnidades()) {
-                                        System.out.println(m.getNombre());
+                                        System.out.println(m.getNombre()+"(Vida: "+m.getVida()+")");
                                     }
                                 }
                             }
@@ -85,7 +85,7 @@ public class Menu {
                             for (Edificio e : ini.p2.getEdificiosC()) {
                                 if (e.getNombre().equals("EscuelaM")) {
                                     for (Milicia m : e.getUnidades()) {
-                                        System.out.println(m.getNombre());
+                                        System.out.println(m.getNombre()+"(Vida: "+m.getVida()+")");
                                     }
                                 }
                             }
@@ -210,7 +210,7 @@ public class Menu {
                 System.out.println("2. Mina de recurso 2. Costo: " + precios.getPrecioS("MinaR2"));
                 System.out.println("3. Mina de recurso 3. Costo: " + precios.getPrecioS("MinaR3"));
                 System.out.println("4. Escuela militar. Costo: " + precios.getPrecioS("CampoEntrenamiento"));
-                System.out.println("5. Fabrica de vehiculos. Costo: " + precios.getPrecioS("FabricaVehiculo"));
+                System.out.println("5. Mejorar Centro de mando.");
                 System.out.println("6. Regresar.");
                 System.out.print("--Seleccione una opción: ");
                 opcion = input.nextInt();
@@ -229,7 +229,7 @@ public class Menu {
                                 ini.p2.addEdificio(mina1);
                             }
                         } else {
-                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                            System.out.println("Error: no tiene suficientes recursos para construir la edificación");
                         }
                         break;
                     case 2:
@@ -244,7 +244,7 @@ public class Menu {
                                 ini.p2.addEdificio(mina2);
                             }
                         } else {
-                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                            System.out.println("Error: no tiene suficientes recursos para construir la edificación");
                         }
                         break;
                     case 3:
@@ -259,7 +259,7 @@ public class Menu {
                                 ini.p2.addEdificio(mina3);
                             }
                         } else {
-                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                            System.out.println("Error: no tiene suficientes recursos para construir la edificación");
                         }
                         break;
                     case 4:
@@ -272,7 +272,7 @@ public class Menu {
                                 ini.p2.addEdificio(escuela);
                             }
                         } else {
-                            System.err.println("No tiene suficientes recursos para construir la edificación");
+                            System.out.println("Error: no tiene suficientes recursos para construir la edificación");
                         }
                         break;
                     case 5:
@@ -281,11 +281,11 @@ public class Menu {
                         bandera = 1;
                         break;
                     default:
-                        System.err.println("No seleccióno una opción válida. Intentelo de nuevo.");
+                        System.out.println("Error: no seleccióno una opción válida. Intentelo de nuevo.");
                 }
 
             } catch (InputMismatchException e) {
-                System.err.println("No seleccinó una opción válida. Intentelo de nuevo.");
+                System.out.println("Error: no seleccinó una opción válida. Intentelo de nuevo.");
             }
         }
         MenuPrincipal(jugador);
@@ -544,12 +544,26 @@ public class Menu {
                         tropa = input.nextLine();
                         System.out.println("\n ¿A qué tropa enemiga desea atacar?");
                         if (jugador == 0) {
-
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.print(m.getNombre() + " - ");
+                                    }
+                                }
+                            }
                         } else {
-
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.print(m.getNombre() + " - ");
+                                    }
+                                }
+                            }
                         }
                         System.out.println("");
                         ataque = input.nextLine();
+                        
+                        
                         break;
                     case 3:
                         bandera = 1;

@@ -4,21 +4,24 @@
  * and open the template in the editor.
  */
 package Creación.Edificio;
+
 import Creación.Milicia.Milicia;
 import Creación.Recursos.Recurso;
 import java.util.ArrayList;
+
 /**
  *
  * @author victor
  */
 public class CentroMando implements Edificio {
+
     private int vida = 1000;
     private int nivel = 1;
     private ArrayList<Recurso> recursos = new ArrayList<Recurso>();
-    private String nombre="centro";
+    private String nombre = "centro";
     private ArrayList<Milicia> ataque = new ArrayList<>();
     private ArrayList<Milicia> atacando = new ArrayList<>();
-    
+
     @Override
     public void GuardarRecurso(ArrayList<Recurso> recurso) {
         this.recursos = recurso;
@@ -65,7 +68,7 @@ public class CentroMando implements Edificio {
 
     @Override
     public String getStats() {
-        return "Centro de mando(Vida: "+vida+")";
+        return "Centro de mando(Vida: " + vida + ")";
     }
 
     @Override
@@ -97,12 +100,27 @@ public class CentroMando implements Edificio {
     public int getVida() {
         return vida;
     }
-    
+
     @Override
     public void setVida(int vida) {
         this.vida = vida;
     }
 
-    
-    
+    @Override
+    public void autodefensa() {
+        Milicia mili = null;
+        for (Milicia m : this.atacando) {
+            if (m.getVida() > 0) {
+                m.restarVida(75);
+            } else {
+                mili = m;
+            }
+
+        }
+        if (mili != null) {
+            this.atacando.remove(mili);
+        }
+
+    }
+
 }
