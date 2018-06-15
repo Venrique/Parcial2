@@ -16,6 +16,8 @@ public class CentroMando implements Edificio {
     private int nivel = 1;
     private ArrayList<Recurso> recursos = new ArrayList<Recurso>();
     private String nombre="centro";
+    private ArrayList<Milicia> ataque = new ArrayList<>();
+    private ArrayList<Milicia> atacando = new ArrayList<>();
     
     @Override
     public void GuardarRecurso(ArrayList<Recurso> recurso) {
@@ -69,6 +71,36 @@ public class CentroMando implements Edificio {
     @Override
     public ArrayList<Milicia> getUnidades() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addAtacante(Milicia milicia) {
+        ataque.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantes() {
+        return ataque;
+    }
+
+    @Override
+    public void addAtacando(Milicia milicia) {
+        atacando.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantesON() {
+        return atacando;
+    }
+
+    @Override
+    public int getVida() {
+        return vida;
+    }
+    
+    @Override
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 
     

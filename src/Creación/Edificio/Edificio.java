@@ -25,4 +25,11 @@ public interface Edificio {
     public void addMilicia(Milicia milicia);
     public String getStats();
     public ArrayList<Milicia> getUnidades();
+    public void addAtacante(Milicia milicia);
+    public void addAtacando(Milicia milicia);;
+    public ArrayList<Milicia> getAtacantes();
+    public ArrayList<Milicia> getAtacantesON();
+    public int getVida();
+    public void setVida(int vida);
+    
 }

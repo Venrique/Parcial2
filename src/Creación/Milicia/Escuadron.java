@@ -5,6 +5,10 @@
  */
 package Creación.Milicia;
 
+import Creación.Edificio.Edificio;
+import java.util.ArrayList;
+import victormendoza.s.world.Ini;
+
 /**
  *
  * @author victor
@@ -12,22 +16,35 @@ package Creación.Milicia;
 public class Escuadron implements Milicia {
    
     private int vida;
-    private int turnos;
+    private int turnosE;
+    private int turnosA;
     private int ataque;
+    private String nombre;
     
     
     public Escuadron(){}
     
-    public Escuadron(int vida,int turnos,int ataque){
+    public Escuadron(int vida,int turnos,int ataque,String nombre,int tiempoA){
         this.vida = vida;
-        this.turnos = turnos;
+        this.turnosE = turnos;
         this.ataque = ataque;
-        
+        this.turnosA = tiempoA;
+        this.nombre = nombre;
     }
     
     @Override
-    public void Atacar() {
-        System.out.println("Attacks");
+    public void Atacar(Edificio edificio,byte jugador) {
+        
+        Ini ini = Ini.getInstance();
+        
+        
+        if(edificio.getVida()>0){
+            edificio.setVida(edificio.getVida()-ataque);
+        }
+        if(edificio.getVida()==0){
+            this.turnosA=0;
+        }
+        
     }
     
     @Override
@@ -45,12 +62,28 @@ public class Escuadron implements Milicia {
 
     @Override
     public boolean TiempoEntrenar() {
-        if(turnos==0){
-            turnos+=1;
-            System.out.println(turnos);
+        if(turnosE==0){
+            turnosE+=1;
+            System.out.println("La tropa "+this.nombre+" lista para combatir");
             return true;
         }else{
-            turnos+=1;
+            turnosE+=1;
+            return false;
+        }
+    }
+
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public boolean TiempoAtacar() {
+        if(turnosA==0){
+            turnosA+=1;
+            return true;
+        }else{
+            turnosA+=1;
             return false;
         }
     }

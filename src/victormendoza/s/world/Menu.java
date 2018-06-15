@@ -64,29 +64,28 @@ public class Menu {
                         for (Edificio e : ini.p1.getEdificiosC()) {
                             System.out.println(e.getStats());
                         }
-                        if(jugador==0){
+                        if (jugador == 0) {
                             System.out.println("Tropas:");
-                            for(Edificio e : ini.p1.getEdificiosC()){
-                                if(e.getNombre().equals("EscuelaM")){
-                                    for(Milicia m : e.getUnidades()){
-                                        System.out.println(m);
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.println(m.getNombre());
                                     }
                                 }
                             }
                         }
-                        
-                        
+
                         System.out.println("\n- - - Jugador 2 - - -");
                         System.out.println("Edificaciones: ");
                         for (Edificio e : ini.p2.getEdificiosC()) {
                             System.out.println(e.getStats());
                         }
-                        if(jugador==1){
+                        if (jugador == 1) {
                             System.out.println("Tropas:");
-                            for(Edificio e : ini.p2.getEdificiosC()){
-                                if(e.getNombre().equals("EscuelaM")){
-                                    for(Milicia m : e.getUnidades()){
-                                        System.out.println(m);
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.println(m.getNombre());
                                     }
                                 }
                             }
@@ -101,32 +100,59 @@ public class Menu {
                         int bandera2 = 5;
                         if (jugador == 0) {
                             for (Edificio e : ini.p1.getEdificiosC()) {
-                                if(e.getNombre().equals("EscuelaM")){
-                                    bandera2=-1;
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    bandera2 = -1;
                                 }
                             }
-                            if(bandera2==5){
+                            if (bandera2 == 5) {
                                 System.out.println("Error: Debe crear una escuela militar primero.");
-                            }else{
-                                bandera=1;
+                            } else {
+                                bandera = 1;
                                 MenuTropas(jugador);
                             }
-                        }else{
+                        } else {
                             for (Edificio e : ini.p2.getEdificiosC()) {
-                                if(e.getNombre().equals("EscuelaM")){
-                                    bandera2=-1;
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    bandera2 = -1;
                                 }
                             }
-                            if(bandera2==5){
+                            if (bandera2 == 5) {
                                 System.out.println("Error: Debe crear una escuela militar primero.");
-                            }else{
-                                bandera=1;
+                            } else {
+                                bandera = 1;
                                 MenuTropas(jugador);
                             }
                         }
 
                         break;
                     case 4:
+
+                        if (jugador == 0) {
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    if (e.getUnidades().size() > 0) {
+                                        bandera = 1;
+                                        MenuAtacar(jugador);
+                                        break;
+                                    } else {
+                                        System.out.println("Error: No tiene tropas con las que atacar.");
+                                    }
+                                }
+                            }
+                        } else {
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    if (e.getUnidades().size() > 0) {
+                                        bandera = 1;
+                                        MenuAtacar(jugador);
+                                        break;
+                                    } else {
+                                        System.out.println("Error: No tiene tropas con las que atacar.");
+                                    }
+                                }
+                            }
+                        }
+                        System.out.println("Error: No tiene tropas con las que atacar.");
                         break;
                     case 5:
                         if (jugador == 0) {
@@ -291,18 +317,20 @@ public class Menu {
                     case 1:
                         if (val.ValidarRecursos(jugador, "Escuadron")) {
                             factory = EdificationProducer.getFactory("milicia");
-                            
+
                             if (jugador == 0) {
-                                Milicia escuadron = factory.getMilicia(ini.p1.getRaza(),"Escuadron");
-                                for(Edificio e : ini.p1.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia escuadron = factory.getMilicia(ini.p1.getRaza(), "Escuadron");
+                                for (Edificio e : ini.p1.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(escuadron);
                                     }
                                 }
                             } else {
-                                Milicia escuadron = factory.getMilicia(ini.p2.getRaza(),"Escuadron");
-                                for(Edificio e : ini.p2.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia escuadron = factory.getMilicia(ini.p2.getRaza(), "Escuadron");
+                                for (Edificio e : ini.p2.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(escuadron);
                                     }
                                 }
@@ -314,18 +342,20 @@ public class Menu {
                     case 2:
                         if (val.ValidarRecursos(jugador, "Especialista")) {
                             factory = EdificationProducer.getFactory("milicia");
-                            
+
                             if (jugador == 0) {
-                                Milicia especialista = factory.getMilicia(ini.p1.getRaza(),"Especialista");
-                                for(Edificio e : ini.p1.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia especialista = factory.getMilicia(ini.p1.getRaza(), "Especialista");
+                                for (Edificio e : ini.p1.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(especialista);
                                     }
                                 }
                             } else {
-                                Milicia especialista = factory.getMilicia(ini.p2.getRaza(),"Especialista");
-                                for(Edificio e : ini.p2.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia especialista = factory.getMilicia(ini.p2.getRaza(), "Especialista");
+                                for (Edificio e : ini.p2.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(especialista);
                                     }
                                 }
@@ -337,18 +367,20 @@ public class Menu {
                     case 3:
                         if (val.ValidarRecursos(jugador, "Vehiculo1")) {
                             factory = EdificationProducer.getFactory("milicia");
-                            
+
                             if (jugador == 0) {
-                                Milicia vehiculo1 = factory.getMilicia(ini.p1.getRaza(),"Vehiculo1");
-                                for(Edificio e : ini.p1.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia vehiculo1 = factory.getMilicia(ini.p1.getRaza(), "Vehiculo1");
+                                for (Edificio e : ini.p1.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(vehiculo1);
                                     }
                                 }
                             } else {
-                                Milicia vehiculo1 = factory.getMilicia(ini.p2.getRaza(),"Especialista");
-                                for(Edificio e : ini.p2.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia vehiculo1 = factory.getMilicia(ini.p2.getRaza(), "Especialista");
+                                for (Edificio e : ini.p2.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(vehiculo1);
                                     }
                                 }
@@ -358,20 +390,22 @@ public class Menu {
                         }
                         break;
                     case 4:
-                       if (val.ValidarRecursos(jugador, "Vehiculo2")) {
+                        if (val.ValidarRecursos(jugador, "Vehiculo2")) {
                             factory = EdificationProducer.getFactory("milicia");
-                            
+
                             if (jugador == 0) {
-                                Milicia vehiculo2 = factory.getMilicia(ini.p1.getRaza(),"Vehiculo2");
-                                for(Edificio e : ini.p1.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia vehiculo2 = factory.getMilicia(ini.p1.getRaza(), "Vehiculo2");
+                                for (Edificio e : ini.p1.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(vehiculo2);
                                     }
                                 }
                             } else {
-                                Milicia vehiculo2 = factory.getMilicia(ini.p2.getRaza(),"Especialista");
-                                for(Edificio e : ini.p2.getEdificiosC()){
-                                    if(e.getNombre().equals("EscuelaM")){
+                                Milicia vehiculo2 = factory.getMilicia(ini.p2.getRaza(), "Especialista");
+                                for (Edificio e : ini.p2.getEdificiosC()) {
+                                    if (e.getNombre().equals("EscuelaM")) {
+                                        ini.ids += 1;
                                         e.addMilicia(vehiculo2);
                                     }
                                 }
@@ -385,6 +419,143 @@ public class Menu {
                         break;
                     default:
                         System.err.println("No seleccióno una opción válida. Intentelo de nuevo.");
+                }
+
+            } catch (InputMismatchException e) {
+                System.err.println("No seleccinó una opción válida. Intentelo de nuevo.");
+            }
+        }
+        MenuPrincipal(jugador);
+    }
+
+    private void MenuAtacar(byte jugador) {
+        Scanner input = new Scanner(System.in);
+        String tropa, ataque;
+        int opcion;
+        byte bandera = 0;
+
+        Precios precios = Precios.getInstace();
+        Ini ini = Ini.getInstance();
+        Validaciones val = Validaciones.getInstance();
+
+        AbstractEdificationFactory factory;
+
+        while (bandera == 0) {
+            try {
+
+                System.out.println("\n¿Qué desea hacer?");
+                System.out.println("1. Atacar.");
+                System.out.println("2. Defender.");
+                System.out.println("3. Regresar.");
+                opcion = input.nextInt();
+                input.nextLine();
+                switch (opcion) {
+                    case 1:
+                        System.out.println("\n¿Con qué tropa desea atacar?");
+                        if (jugador == 0) {
+
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.print(m.getNombre() + " - ");
+                                    }
+                                }
+                            }
+                        } else {
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.print(m.getNombre() + " - ");
+                                    }
+                                }
+                            }
+                        }
+                        System.out.println("");
+                        tropa = input.nextLine().trim();
+                        System.out.println("\n ¿A qué edificación enemiga desea atacar?");
+                        if (jugador == 0) {
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                System.out.println(e.getNombre());
+                            }
+                        } else {
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                System.out.println(e.getNombre());
+                            }
+                        }
+                        System.out.println("");
+                        ataque = input.nextLine().trim();
+
+                        System.out.println(tropa + " " + ataque);
+
+                        if (jugador == 0) {
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                if (e.getNombre().equals(ataque)) {
+                                    for (Edificio e2 : ini.p1.getEdificiosC()) {
+                                        if (e2.getNombre().equals("EscuelaM")) {
+
+                                            for (Milicia m : e2.getUnidades()) {
+                                                if (m.getNombre().equals(tropa)) {
+
+                                                    e.addAtacante(m);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                if (e.getNombre().equals(ataque)) {
+                                    for (Edificio e2 : ini.p2.getEdificiosC()) {
+                                        if (e2.getNombre().equals("EscuelaM")) {
+                                            for (Milicia m : e2.getUnidades()) {
+                                                if (m.getNombre().equals(tropa)) {
+                                                    e.addAtacante(m);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        break;
+                    case 2:
+                        System.out.println("\n¿Con qué tropa desea atacar?");
+                        if (jugador == 0) {
+
+                            for (Edificio e : ini.p1.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.print(m.getNombre() + " - ");
+                                    }
+                                }
+                            }
+                        } else {
+                            for (Edificio e : ini.p2.getEdificiosC()) {
+                                if (e.getNombre().equals("EscuelaM")) {
+                                    for (Milicia m : e.getUnidades()) {
+                                        System.out.print(m.getNombre() + " - ");
+                                    }
+                                }
+                            }
+                        }
+                        System.out.println("");
+                        tropa = input.nextLine();
+                        System.out.println("\n ¿A qué tropa enemiga desea atacar?");
+                        if (jugador == 0) {
+
+                        } else {
+
+                        }
+                        System.out.println("");
+                        ataque = input.nextLine();
+                        break;
+                    case 3:
+                        bandera = 1;
+                        break;
+                    default:
+                        System.out.println("No seleccionó una opción válida. Intentelo de nuevo.");
                 }
 
             } catch (InputMismatchException e) {

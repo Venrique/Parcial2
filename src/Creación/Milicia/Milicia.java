@@ -5,12 +5,16 @@
  */
 package Creación.Milicia;
 
+import Creación.Edificio.Edificio;
+
 /**
  *
  * @author victor
  */
 public interface Milicia {
-    void Atacar();
-    int getAtaque();
+    public void Atacar(Edificio edificio,byte jugador);
+    public int getAtaque();
     public boolean TiempoEntrenar();
+    public boolean TiempoAtacar();
+    public String getNombre();
 }

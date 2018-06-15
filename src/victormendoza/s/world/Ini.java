@@ -23,6 +23,8 @@ public class Ini {
     public Jugador p1 = new Jugador();
     public Jugador p2 = new Jugador();
     public int turnos = 0;
+    public int contador = 0;
+    public int ids = 0;
 
     private static Ini ini;
 
@@ -47,7 +49,7 @@ public class Ini {
         System.out.println("\n•RAZAS•");
         System.out.println("1. Humano: Stats normales.");
         System.out.println("2. Alien: Más daño pero menos vida.");
-        System.out.println("3. Robot: Unidades más rápidas pero menos daño. ");
+        System.out.println("3. Robot: Construcción más rápida pero menos daño.");
         System.out.println("\nJugador 1 escoja su raza:");
         p1.setRaza(input.nextInt());
         System.out.println("\nJugador 2 escoja su raza:");
@@ -70,7 +72,7 @@ public class Ini {
             PaqueteRecursos recursosH = recursoBuilder.recursosHumanos();
             recursosH.getListaRecurso().get(0).addCantidad(5000);
             recursosH.getListaRecurso().get(1).addCantidad(1500);
-            recursosH.getListaRecurso().get(2).addCantidad(500);
+            recursosH.getListaRecurso().get(2).addCantidad(5000);
             p1.getEdificiosC().get(0).GuardarRecurso(recursosH.getListaRecurso());
 
         } else if (p1.getRaza() == "alien") {
@@ -114,7 +116,7 @@ public class Ini {
     private void Juego() {
         byte bandera = 0;
         Scanner input = new Scanner(System.in);
-        int contador = 0;
+        ArrayList<Edificio> found = new ArrayList<Edificio>();
 
         while (p1.getCantEdificiosC() != 0 && p2.getCantEdificiosC() != 0) {
             System.out.println("\n.\n.\n.\n|| FASE #" + contador + " ||");
@@ -124,29 +126,70 @@ public class Ini {
                 System.out.println(ini.p1.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
                 System.out.println(ini.p1.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
                 for (Edificio i : ini.p1.getEdificios()) {
+
                     if (i.TiempoConstruccion()) {
+                        System.out.println(i.getNombre() + " ha terminado de construirse.");
                         ini.p1.addEdificioC(i);
 
                     }
+
                 }
 
                 for (Edificio e : ini.p1.getEdificiosC()) {
+
+                    for (Milicia m : e.getAtacantes()) {
+
+                        if (m.TiempoAtacar()) {
+                            System.out.println(m.getNombre() + " está ahora atacando a " + e.getNombre());
+                            e.addAtacando(m);
+
+                        }
+                    }
+
+                    if (e.getVida() <= 0) {
+                        found.add(e);
+                    }
+
+                    for (Milicia m : e.getAtacantesON()) {
+                        m.Atacar(e, bandera);
+                    }
                     e.Generar();
                 }
+
+                ini.p1.getEdificiosC().removeAll(found);
+
             } else {
                 System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(0).getCantidad());
                 System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(1).getCantidad());
                 System.out.println(ini.p2.getEdificiosC().get(0).getRecursos().get(2).getCantidad());
                 for (Edificio i : ini.p2.getEdificios()) {
                     if (i.TiempoConstruccion()) {
+                        System.out.println(i.getNombre() + " ha terminado de construirse.");
                         ini.p2.addEdificioC(i);
 
                     }
+
                 }
 
                 for (Edificio e : ini.p2.getEdificiosC()) {
+                    for (Milicia m : e.getAtacantes()) {
+                        if (m.TiempoAtacar()) {
+                            System.out.println(m.getNombre() + " está ahora atacando a " + e.getNombre());
+                            e.addAtacando(m);
+
+                        }
+                    }
+
+                    if (e.getVida() <= 0) {
+                        found.add(e);
+                    }
+
+                    for (Milicia m : e.getAtacantesON()) {
+                        m.Atacar(e, bandera);
+                    }
                     e.Generar();
                 }
+                ini.p2.getEdificiosC().removeAll(found);
             }
 
             System.out.println("\nTurno del jugador " + (bandera + 1));
@@ -158,7 +201,7 @@ public class Ini {
             } else {
                 bandera = 0;
             }
-
+            found.removeAll(found);
             contador++;
 
         }

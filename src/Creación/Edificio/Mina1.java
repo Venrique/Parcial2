@@ -18,16 +18,19 @@ import java.util.ArrayList;
  * @author victor
  */
 public class Mina1 implements Edificio {
+
     private int vida = 300;
     private Recursos recurso;
     private int uso = -1;
-    private String nombre="Mina1";
+    private String nombre = "Mina1";
+    private ArrayList<Milicia> ataque = new ArrayList<>();
+    private ArrayList<Milicia> atacando = new ArrayList<>();
 
     @Override
     public void Generar() {
 
         recurso.addCantidad(50);
-        System.out.println("Recurso1: "+recurso.getCantidad());
+        System.out.println("Recurso1: " + recurso.getCantidad());
     }
 
     @Override
@@ -53,12 +56,12 @@ public class Mina1 implements Edificio {
 
     @Override
     public boolean TiempoConstruccion() {
-        if(uso==0){
-            uso+=1;
+        if (uso == 0) {
+            uso += 1;
             System.out.println(uso);
             return true;
-        }else{
-            uso+=1;
+        } else {
+            uso += 1;
             return false;
         }
     }
@@ -85,12 +88,42 @@ public class Mina1 implements Edificio {
 
     @Override
     public String getStats() {
-        return "Mina de recurso 1(Vida: "+vida+")";
+        return "Mina de recurso 1(Vida: " + vida + ")";
     }
 
     @Override
     public ArrayList<Milicia> getUnidades() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addAtacante(Milicia milicia) {
+        ataque.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantes() {
+        return ataque;
+    }
+
+    @Override
+    public void addAtacando(Milicia milicia) {
+        atacando.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantesON() {
+        return atacando;
+    }
+
+    @Override
+    public int getVida() {
+        return vida;
+    }
+
+    @Override
+    public void setVida(int vida) {
+        this.vida = vida;
     }
 
 }

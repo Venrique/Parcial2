@@ -14,20 +14,22 @@ import java.util.ArrayList;
  * @author victor
  */
 public class EscuelaM implements Edificio {
-    
+
     private String nombre = "EscuelaM";
     private ArrayList<Milicia> unidadesC = new ArrayList<>();
     private ArrayList<Milicia> unidades = new ArrayList<>();
     private int uso = -1;
     private int vida = 500;
-    
+    private ArrayList<Milicia> ataque = new ArrayList<>();
+    private ArrayList<Milicia> atacando = new ArrayList<>();
+
     @Override
     public void Generar() {
-       for(Milicia m : unidades){
-           if(m.TiempoEntrenar()){
-               unidadesC.add(m);
-           }
-       }
+        for (Milicia m : unidades) {
+            if (m.TiempoEntrenar()) {
+                unidadesC.add(m);
+            }
+        }
     }
 
     @Override
@@ -42,16 +44,16 @@ public class EscuelaM implements Edificio {
 
     @Override
     public void AsignarRecurso(String milicia) {
-        
+
     }
 
     @Override
     public boolean TiempoConstruccion() {
-        if(uso==0){
-            uso+=1;
+        if (uso == 0) {
+            uso += 1;
             return true;
-        }else{
-            uso+=1;
+        } else {
+            uso += 1;
             return false;
         }
     }
@@ -78,12 +80,42 @@ public class EscuelaM implements Edificio {
 
     @Override
     public String getStats() {
-        return "Escuela Militar(Vida: "+vida+")";
+        return "Escuela Militar(Vida: " + vida + ")";
     }
 
     @Override
     public ArrayList<Milicia> getUnidades() {
         return unidadesC;
     }
-    
+
+    @Override
+    public void addAtacante(Milicia milicia) {
+        ataque.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantes() {
+        return ataque;
+    }
+
+    @Override
+    public void addAtacando(Milicia milicia) {
+        atacando.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantesON() {
+        return atacando;
+    }
+
+    @Override
+    public int getVida() {
+        return vida;
+    }
+
+    @Override
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
 }

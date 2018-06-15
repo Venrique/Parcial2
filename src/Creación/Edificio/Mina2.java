@@ -18,15 +18,18 @@ import java.util.ArrayList;
  * @author victor
  */
 public class Mina2 implements Edificio {
+
     private int vida = 400;
     private Recursos recurso;
     private int uso = -1;
     private String nombre = "Mina2";
-    
+    private ArrayList<Milicia> ataque = new ArrayList<>();
+    private ArrayList<Milicia> atacando = new ArrayList<>();
+
     @Override
     public void Generar() {
         recurso.addCantidad(50);
-        System.out.println("Recurso2: "+recurso.getCantidad());
+        System.out.println("Recurso2: " + recurso.getCantidad());
     }
 
     @Override
@@ -41,22 +44,22 @@ public class Mina2 implements Edificio {
 
     @Override
     public void AsignarRecurso(String raza) {
-        if(raza=="humano"){
+        if (raza == "humano") {
             this.recurso = new R2H_Piedra();
-        }else if(raza=="alien"){
+        } else if (raza == "alien") {
             this.recurso = new R2A_Oricalco();
-        }else{
+        } else {
             this.recurso = new R2R_Electricidad();
         }
     }
 
     @Override
     public boolean TiempoConstruccion() {
-        if(uso==0){
-            uso+=1;
+        if (uso == 0) {
+            uso += 1;
             return true;
-        }else{
-            uso+=1;
+        } else {
+            uso += 1;
             return false;
         }
     }
@@ -83,7 +86,7 @@ public class Mina2 implements Edificio {
 
     @Override
     public String getStats() {
-        return "Mina de recurso 2(Vida: "+vida+")";
+        return "Mina de recurso 2(Vida: " + vida + ")";
     }
 
     @Override
@@ -91,6 +94,34 @@ public class Mina2 implements Edificio {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void addAtacante(Milicia milicia) {
+        ataque.add(milicia);
+    }
 
-    
+    @Override
+    public ArrayList<Milicia> getAtacantes() {
+        return ataque;
+    }
+
+    @Override
+    public void addAtacando(Milicia milicia) {
+        atacando.add(milicia);
+    }
+
+    @Override
+    public ArrayList<Milicia> getAtacantesON() {
+        return atacando;
+    }
+
+    @Override
+    public int getVida() {
+        return vida;
+    }
+
+    @Override
+    public void setVida(int vida) {
+        this.vida=vida;
+    }
+
 }
